@@ -69,10 +69,12 @@ class Ball():
 
     def move(self,levels):
         self.rect = self.rect.move(self.speed)
-        if self.rect.left < 0 or self.rect.right > 600:
-            self.speed[0] = -self.speed[0]
+        if self.rect.left < 0:
+            self.speed[0] = abs(self.speed[0])
+        if self.rect.right > 600:
+            self.speed[0] = -abs(self.speed[0])
         if self.rect.top < 0 :
-            self.speed[1] = - self.speed[1]
+            self.speed[1] =  abs(self.speed[1])
         if self.rect.bottom > 800:
             self.ballMove=False
             self.paint = True
@@ -219,7 +221,7 @@ while round:
         ball.draw()
         for ball in balls:
             ball.paint=False
-        if(round!=1):
+        if(round!=1 ):
             balls.append(Ball())
     if gameOver == True:
         break
