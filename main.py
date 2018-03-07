@@ -245,6 +245,8 @@ while round:
             pose = pygame.mouse.get_pos()
             move_x = pose[0] - poss[0]
             move_y = pose[1] - poss[1]
+            if(move_y>=0):
+                continue
             mo = pow((move_x*move_x+move_y*move_y),0.5)
             for ball in balls:
                 ball.direction(move_x/mo*10,move_y/mo*10)
